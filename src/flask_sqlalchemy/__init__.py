@@ -899,7 +899,7 @@ class SQLAlchemy:
             to the original caller.
         """
         if sa_url.drivername.startswith('mysql'):
-            sa_url.query.setdefault('charset', 'utf8')
+            sa_url = _sa_url_query_setdefault(sa_url, charset="utf8")
             if sa_url.drivername != 'mysql+gaerdbms':
                 pool_class = options.get("poolclass")
                 if pool_class and pool_class.status != 'NullPool':
